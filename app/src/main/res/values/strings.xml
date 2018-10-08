@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Dhun</string>
+
+    <string name="logoDesc">Logo as Splash</string>
+    <string name="thumbnail">Thumbnail of Song</string>
+    <string name="initialTime">0:00</string>
+    <string name="runtime">5:00</string>
+    <string name="desc">Image Asset</string>
+    <string name="shuffle_toast">This will shuffle songs list</string>
+    <string name="play_previous_toast">This will play previous song</string>
+    <string name="play_toast">Playing now</string>
+    <string name="pause_toast">Song Paused</string>
+    <string name="play_next_toast">This will play next song</string>
+    <string name="favourite_toast">Favourited</string>
+    <string name="unfavourite_toast">Unfavourited</string>
+
+</resources>

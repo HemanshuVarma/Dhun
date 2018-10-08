@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/eightDips"
+    android:layout_margin="@dimen/sixteenDips">
+
+    <ImageView
+        android:id="@+id/albumThumbnail"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/thumbnail"
+        tools:src="@drawable/lag_ja_gale_cover" />
+
+    <TextView
+        android:id="@+id/songName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/albumThumbnail"
+        android:layout_toRightOf="@id/albumThumbnail"
+        android:paddingLeft="@dimen/sixteenDips"
+        android:paddingRight="@dimen/sixteenDips"
+        android:paddingStart="@dimen/sixteenDips"
+        android:textSize="16sp"
+        tools:text="Lag Ja Gale" />
+
+    <TextView
+        android:id="@+id/songArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/albumThumbnail"
+        android:layout_toEndOf="@+id/albumThumbnail"
+        android:layout_toRightOf="@id/albumThumbnail"
+        android:paddingLeft="@dimen/sixteenDips"
+        android:paddingRight="@dimen/sixteenDips"
+        android:paddingStart="@dimen/sixteenDips"
+        tools:text="Lata Mangeshkar" />
+
+
+</RelativeLayout>
