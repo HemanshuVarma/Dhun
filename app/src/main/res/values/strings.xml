@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Dhun</string>
+    <string name="labelMainActivity">Home</string>
+    <string name="labelSplashActivity">Splash Activity</string>
 
     <string name="logoDesc">Logo as Splash</string>
     <string name="thumbnail">Thumbnail of Song</string>

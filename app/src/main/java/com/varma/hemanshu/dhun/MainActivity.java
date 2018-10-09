@@ -6,19 +6,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     private SlidingUpPanelLayout mLayout;
@@ -87,22 +83,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //onClickListener for Shuffle Button
-        shuffleButtonView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.shuffle_toast, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //onClickListener for Play Previous Button
-        playPreviousButtonView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.play_previous_toast, Toast.LENGTH_SHORT).show();
-            }
-        });
-
         //onClickListener for Play/Pause Button in BottomSheet Activity
         play_pauseBottomSheetView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,37 +91,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //onClickListener for Shuffle Button
+        shuffleButtonView.setOnClickListener(this);
+
+        //onClickListener for Play Previous Button
+        playPreviousButtonView.setOnClickListener(this);
+
         //onClickListener for Play/Pause Button in Now Playing Activity
-        play_pauseNowPlayingView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updatePlayPauseImage();
-            }
-        });
+        play_pauseNowPlayingView.setOnClickListener(this);
 
         //onClickListener for Play Next Button
-        playNextButtonView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.play_next_toast, Toast.LENGTH_SHORT).show();
-            }
-        });
+        playNextButtonView.setOnClickListener(this);
 
         //onClickListener for Favourite/Unfavourite Button
-        fav_unfavButtonView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isFavourite) {
-                    fav_unfavButtonView.setImageResource(R.drawable.round_favorite_border_black_36);
-                    Toast.makeText(MainActivity.this, R.string.unfavourite_toast, Toast.LENGTH_SHORT).show();
-                    isFavourite = false;
-                } else {
-                    fav_unfavButtonView.setImageResource(R.drawable.round_favorite_black_36);
-                    Toast.makeText(MainActivity.this, R.string.favourite_toast, Toast.LENGTH_SHORT).show();
-                    isFavourite = true;
-                }
-            }
-        });
+        fav_unfavButtonView.setOnClickListener(this);
 
         mLayout = findViewById(R.id.sliding_layout);
         mLayout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
@@ -163,6 +126,41 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * onClickListener for Utility Buttons
+     * This includes Shuffle, Play Previous, Play/Pause, Play Next and Favourite
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.shuffle:
+                Toast.makeText(MainActivity.this, R.string.shuffle_toast, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.playPrevious:
+                Toast.makeText(MainActivity.this, R.string.play_previous_toast, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.play_pause_now_playing:
+                updatePlayPauseImage();
+                break;
+            case R.id.playNext:
+                Toast.makeText(MainActivity.this, R.string.play_next_toast, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.favourite:
+                if (isFavourite) {
+                    fav_unfavButtonView.setImageResource(R.drawable.round_favorite_border_black_36);
+                    Toast.makeText(MainActivity.this, R.string.unfavourite_toast, Toast.LENGTH_SHORT).show();
+                    isFavourite = false;
+                } else {
+                    fav_unfavButtonView.setImageResource(R.drawable.round_favorite_black_36);
+                    Toast.makeText(MainActivity.this, R.string.favourite_toast, Toast.LENGTH_SHORT).show();
+                    isFavourite = true;
+                }
+                break;
+
+        }
+    }
+
+    //To update image in BottomSheet and Now Playing at once
     public void updatePlayPauseImage() {
         if (isPlaying) {
             play_pauseNowPlayingView.setImageResource(R.drawable.round_pause_black_48);
